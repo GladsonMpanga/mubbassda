@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <pattern id="gridabo" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.35"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="#dfe3ea"/>
+  <rect width="100%" height="100%" fill="url(#gridabo)"/>
+  <g fill="none" stroke="#5a6472" stroke-width="2" opacity="0.5">
+    <circle cx="400.0" cy="252.0" r="84.00000000000001"/>
+    <path d="M 256.0 432.0 Q 400.0 330.0 544.0 432.0" />
+  </g>
+  <text x="50%" y="528.0" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#5a6472" text-anchor="middle" font-weight="600">Main Sanctuary</text>
+</svg>

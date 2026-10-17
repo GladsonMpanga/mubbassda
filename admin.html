@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — MUBAS SDA Club</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+<!-- ================= LOGIN SCREEN ================= -->
+<div class="admin-login" id="adminLogin">
+  <form class="admin-login-card" id="adminLoginForm">
+    <img src="images/logo.svg" alt="MUBAS SDA Club logo">
+    <h1>Admin Panel</h1>
+    <p>Sign in to manage news, executives and contact details.</p>
+    <div class="form-group">
+      <label for="adminPasswordInput" style="display:block;text-align:left;font-size:13px;font-weight:700;margin-bottom:8px;">Password</label>
+      <input type="password" id="adminPasswordInput" placeholder="Enter admin password" required>
+    </div>
+    <button type="submit" class="btn btn--solid">Sign In</button>
+    <p class="admin-login-error" id="adminLoginError"></p>
+    <div class="admin-hint-box">
+      Default password: <code>mubas2026</code><br>
+      Change it any time from Settings once signed in.
+    </div>
+  </form>
+</div>
+
+<!-- ================= DASHBOARD ================= -->
+<div class="admin-shell" id="adminDashboard" style="display:none;">
+
+  <aside class="admin-sidebar">
+    <div class="admin-brand">
+      <img src="images/logo.svg" alt="MUBAS SDA Club logo">
+      <span>MUBAS Admin</span>
+    </div>
+    <nav class="admin-nav">
+      <button data-view="dashboard" class="active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        Dashboard
+      </button>
+      <button data-view="news">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        News
+      </button>
+      <button data-view="executive">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>
+        Executive
+      </button>
+      <button data-view="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.9 2.9l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.6V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1-1.6 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.9-2.9l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.6-1H3a2 2 0 010-4h.1a1.7 1.7 0 001.6-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.9-2.9l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.6V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.6 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.9 2.9l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.6 1h.1a2 2 0 010 4h-.1a1.7 1.7 0 00-1.6 1z"/></svg>
+        Settings
+      </button>
+    </nav>
+    <button class="admin-logout btn btn--light btn--sm">Log Out</button>
+  </aside>
+
+  <main class="admin-main">
+
+    <!-- ---- DASHBOARD VIEW ---- -->
+    <section class="admin-view active" id="view-dashboard">
+      <div class="admin-topbar">
+        <div>
+          <h1>Welcome back</h1>
+          <p>Here's a quick overview of your site content.</p>
+        </div>
+        <a href="index.html" target="_blank" class="btn btn--sm">View Live Site</a>
+      </div>
+      <div class="admin-stats">
+        <div class="stat-card"><strong id="statNewsCount">0</strong><span>News Posts</span></div>
+        <div class="stat-card"><strong id="statExecCount">0</strong><span>Executive Members</span></div>
+        <div class="stat-card"><strong id="statGroupsCount">0</strong><span>Small Singing Groups</span></div>
+      </div>
+      <div class="admin-panel">
+        <h2>Quick Guide</h2>
+        <p style="font-size:14px;color:var(--c-gray);margin-bottom:10px;">This panel controls content shown on the public site — no code editing required:</p>
+        <ul style="font-size:14px;color:#444;line-height:2;padding-left:18px;list-style:disc;">
+          <li>Use <strong>News</strong> to publish or remove club updates shown on the Home and News pages.</li>
+          <li>Use <strong>Executive</strong> to manage the 15 committee members shown on the Executive page.</li>
+          <li>Use <strong>Settings</strong> to update WhatsApp, Facebook, YouTube, Play Store links and your admin password.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ---- NEWS VIEW ---- -->
+    <section class="admin-view" id="view-news">
+      <div class="admin-topbar">
+        <div><h1>Manage News</h1><p>Publish updates that appear on the Home and News pages.</p></div>
+      </div>
+
+      <div class="admin-panel">
+        <h2 id="newsFormTitle">Add News Post</h2>
+        <form class="admin-form" id="newsForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="newsTitle">Title</label>
+              <input type="text" id="newsTitle" placeholder="e.g. Choir Wins Inter-College Fest" required>
+            </div>
+            <div class="form-group">
+              <label for="newsCategory">Category</label>
+              <input type="text" id="newsCategory" placeholder="e.g. Choir, Outreach, Leadership">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="newsDate">Date</label>
+              <input type="date" id="newsDate">
+            </div>
+            <div class="form-group">
+              <label for="newsImage">Image Path or URL</label>
+              <input type="text" id="newsImage" placeholder="images/news1.svg">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="newsExcerpt">Description</label>
+            <textarea id="newsExcerpt" placeholder="Write a short summary of the news update..." required></textarea>
+          </div>
+          <div class="admin-form-actions">
+            <button type="submit" class="btn btn--solid">Publish Post</button>
+            <button type="button" id="newsFormCancel" class="btn btn--sm" style="display:none;">Cancel Edit</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="admin-panel">
+        <h2>Published Posts</h2>
+        <table class="admin-table">
+          <thead><tr><th>Image</th><th>Title</th><th>Category</th><th>Date</th><th>Actions</th></tr></thead>
+          <tbody id="newsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ---- EXECUTIVE VIEW ---- -->
+    <section class="admin-view" id="view-executive">
+      <div class="admin-topbar">
+        <div><h1>Manage Executive Committee</h1><p>Keep the 15 committee members up to date.</p></div>
+      </div>
+
+      <div class="admin-panel">
+        <h2 id="execFormTitle">Add Executive Member</h2>
+        <form class="admin-form" id="execForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="execName">Full Name</label>
+              <input type="text" id="execName" placeholder="e.g. Blessings Mvula" required>
+            </div>
+            <div class="form-group">
+              <label for="execPosition">Position</label>
+              <input type="text" id="execPosition" placeholder="e.g. Club President" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="execImage">Photo Path or URL</label>
+            <input type="text" id="execImage" placeholder="images/exec-placeholder.svg">
+          </div>
+          <div class="admin-form-actions">
+            <button type="submit" class="btn btn--solid">Save Member</button>
+            <button type="button" id="execFormCancel" class="btn btn--sm" style="display:none;">Cancel Edit</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="admin-panel">
+        <h2>Current Committee</h2>
+        <table class="admin-table">
+          <thead><tr><th>Photo</th><th>Name</th><th>Position</th><th>Actions</th></tr></thead>
+          <tbody id="execTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ---- SETTINGS VIEW ---- -->
+    <section class="admin-view" id="view-settings">
+      <div class="admin-topbar">
+        <div><h1>Contact Settings</h1><p>These links and details are used across the whole site.</p></div>
+      </div>
+
+      <div class="admin-panel">
+        <h2>Contact Channels</h2>
+        <form class="admin-form" id="settingsForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="settingsWhatsapp">WhatsApp Link</label>
+              <input type="url" id="settingsWhatsapp" placeholder="https://wa.me/265999000000">
+            </div>
+            <div class="form-group">
+              <label for="settingsFacebook">Facebook Page Link</label>
+              <input type="url" id="settingsFacebook" placeholder="https://facebook.com/yourpage">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="settingsYoutube">YouTube Channel Link</label>
+              <input type="url" id="settingsYoutube" placeholder="https://youtube.com/@yourchannel">
+            </div>
+            <div class="form-group">
+              <label for="settingsPlaystore">Google Play Store Link</label>
+              <input type="url" id="settingsPlaystore" placeholder="https://play.google.com/store/apps/details?id=...">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="settingsEmail">Email Address</label>
+              <input type="email" id="settingsEmail" placeholder="club@mubas.ac.mw">
+            </div>
+            <div class="form-group">
+              <label for="settingsPhone">Phone Number</label>
+              <input type="text" id="settingsPhone" placeholder="+265 999 000 000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="settingsAddress">Campus Address</label>
+            <input type="text" id="settingsAddress" placeholder="MUBAS, Blantyre, Malawi">
+          </div>
+          <div class="admin-form-actions">
+            <button type="submit" class="btn btn--solid">Save Settings</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="admin-panel">
+        <h2>Change Admin Password</h2>
+        <form class="admin-form" id="passwordForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="currentPassword">Current Password</label>
+              <input type="password" id="currentPassword" required>
+            </div>
+            <div class="form-group">
+              <label for="newPassword">New Password</label>
+              <input type="password" id="newPassword" required minlength="4">
+            </div>
+          </div>
+          <div class="admin-form-actions">
+            <button type="submit" class="btn btn--solid">Update Password</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/data.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

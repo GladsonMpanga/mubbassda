@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <pattern id="gridlog" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.35"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="#12213c"/>
+  <rect width="100%" height="100%" fill="url(#gridlog)"/>
+  <g fill="none" stroke="#f44336" stroke-width="2" opacity="0.5">
+    <circle cx="60.0" cy="50.4" r="16.8"/>
+    <path d="M 38.4 86.39999999999999 Q 60.0 66.0 81.60000000000001 86.39999999999999" />
+  </g>
+  <text x="50%" y="105.6" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#f44336" text-anchor="middle" font-weight="600">MUBAS SDA</text>
+</svg>
