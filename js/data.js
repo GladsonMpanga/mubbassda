@@ -100,14 +100,24 @@ function mubasSave(key, value){
   }
 }
 
-function mubasInitDB(){
-  if(!localStorage.getItem(MUBAS_DB_KEYS.news)){
+const MUBAS_CONTENT_VERSION = "2026-10-25-2";
+
+function mubasInitDB() {
+  const savedVersion = localStorage.getItem(
+    "mubas_content_version"
+  );
+
+  if (savedVersion !== MUBAS_CONTENT_VERSION) {
     mubasSave(MUBAS_DB_KEYS.news, DEFAULT_NEWS);
-  }
-  if(!localStorage.getItem(MUBAS_DB_KEYS.executives)){
     mubasSave(MUBAS_DB_KEYS.executives, DEFAULT_EXECUTIVES);
+
+    localStorage.setItem(
+      "mubas_content_version",
+      MUBAS_CONTENT_VERSION
+    );
   }
-  if(!localStorage.getItem(MUBAS_DB_KEYS.settings)){
+
+  if (!localStorage.getItem(MUBAS_DB_KEYS.settings)) {
     mubasSave(MUBAS_DB_KEYS.settings, DEFAULT_SETTINGS);
   }
 }
